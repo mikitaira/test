@@ -238,8 +238,12 @@ bool CVoxelyze::writeJSON(rapidjson::PrettyWriter<rapidjson::StringBuffer>& w)
 			w.EndObject();
 		}
 		w.EndArray();
-		w.EndObject();
+		//taira
+		//w.EndObject();
 	}
+
+	//taira
+	w.EndObject();
 
 	return true;
 }
