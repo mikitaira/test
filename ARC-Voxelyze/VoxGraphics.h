@@ -6,8 +6,6 @@
 #include <sstream>
 #include <GL/glut.h>
 #include <GL/gl.h>
-#include <gl/freeglut.h>
-#include <random>
 
 
 #include <Voxelyze.h>
@@ -15,92 +13,47 @@
 #include "GLCapture.hpp"
 
 
-#ifdef _WIN64
-
 #ifdef _DEBUG
 
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_calib3d320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_core320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_features2d320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_flann320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_highgui320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_imgcodecs320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_imgproc320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_ml320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_objdetect320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_photo320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_shape320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_stitching320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_superres320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_video320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_videoio320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_videostab320d.lib")
+#pragma comment(lib,"lib\\opencv_calib3d320d.lib")
+#pragma comment(lib,"lib\\opencv_core320d.lib")
+#pragma comment(lib,"lib\\opencv_features2d320d.lib")
+#pragma comment(lib,"lib\\opencv_flann320d.lib")
+#pragma comment(lib,"lib\\opencv_highgui320d.lib")
+#pragma comment(lib,"lib\\opencv_imgcodecs320d.lib")
+#pragma comment(lib,"lib\\opencv_imgproc320d.lib")
+#pragma comment(lib,"lib\\opencv_ml320d.lib")
+#pragma comment(lib,"lib\\opencv_objdetect320d.lib")
+#pragma comment(lib,"lib\\opencv_photo320d.lib")
+#pragma comment(lib,"lib\\opencv_shape320d.lib")
+#pragma comment(lib,"lib\\opencv_stitching320d.lib")
+#pragma comment(lib,"lib\\opencv_superres320d.lib")
+#pragma comment(lib,"lib\\opencv_video320d.lib")
+#pragma comment(lib,"lib\\opencv_videoio320d.lib")
+#pragma comment(lib,"lib\\opencv_videostab320d.lib")
 
 #else											  
 //Releaseモードの場合
 
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_calib3d320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_core320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_features2d320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_flann320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_highgui320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_imgcodecs320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_imgproc320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_ml320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_objdetect320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_photo320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_shape320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_stitching320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_superres320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_video320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_videoio320.lib")
-#pragma comment(lib,"C:\\opencv320\\build64\\install\\x64\\vc14\\lib\\opencv_videostab320.lib")
+#pragma comment(lib,"lib\\opencv_calib3d320.lib")
+#pragma comment(lib,"lib\\opencv_core320.lib")
+#pragma comment(lib,"lib\\opencv_features2d320.lib")
+#pragma comment(lib,"lib\\opencv_flann320.lib")
+#pragma comment(lib,"lib\\opencv_highgui320.lib")
+#pragma comment(lib,"lib\\opencv_imgcodecs320.lib")
+#pragma comment(lib,"lib\\opencv_imgproc320.lib")
+#pragma comment(lib,"lib\\opencv_ml320.lib")
+#pragma comment(lib,"lib\\opencv_objdetect320.lib")
+#pragma comment(lib,"lib\\opencv_photo320.lib")
+#pragma comment(lib,"lib\\opencv_shape320.lib")
+#pragma comment(lib,"lib\\opencv_stitching320.lib")
+#pragma comment(lib,"lib\\opencv_superres320.lib")
+#pragma comment(lib,"lib\\opencv_video320.lib")
+#pragma comment(lib,"lib\\opencv_videoio320.lib")
+#pragma comment(lib,"lib\\opencv_videostab320.lib")
 
 #endif
 
-#else
-#ifdef _DEBUG
-//Debugモードの場合
-
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_calib3d320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_core320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_features2d320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_flann320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_highgui320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_imgcodecs320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_imgproc320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_ml320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_objdetect320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_photo320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_shape320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_stitching320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_superres320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_video320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_videoio320d.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_videostab320d.lib")
-
-#else											  
-//Releaseモードの場合
-
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_calib3d320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_core320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_features2d320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_flann320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_highgui320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_imgcodecs320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_imgproc320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_ml320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_objdetect320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_photo320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_shape320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_stitching320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_superres320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_video320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_videoio320.lib")
-#pragma comment(lib,"C:\\opencv320\\build\\install\\x86\\vc14\\lib\\opencv_videostab320.lib")
-
-#endif
-#endif
 
 void idleGL();
 void paintGL();
